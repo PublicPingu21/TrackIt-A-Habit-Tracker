@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Habit Building Tracker</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .navbar-brand {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .navbar .form-control {
+            width: 300px;
+        }
+
+        .div-carousel {
+            position: relative;
+            height: 100vh;
+        }
+
+        .swiper-container {
+            height: 100%;
+            width: 100%;
+        }
+
+        .swiper-slide img {
+            object-fit: cover;
+            height: 100%;
+            width: 100%;
+        }
+
+        .habit-records {
+            width: 80%;
+            max-width: 600px;
+            text-align: center;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            max-height: 70%;
+            overflow-y: auto;
+        }
+
+        .habit-record {
+            border: 1px solid #eaeaea;
+            padding: 10px;
+            margin-bottom: 10px;
+            position: relative;
+            text-align: left;
+        }
+
+        .delete-btn, .done-btn {
+            position: absolute;
+            top: 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            right: 10px;
+        }
+
+        .done-btn {
+            right: 40px;
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navbar bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand text-light">TrackIt</a>
+            <form class="d-flex ms-auto" role="search" id="habitForm">
+                <button class="btn btn-light" type="button" onclick="viewHistory()">History</button>
+                <input class="form-control me-2" type="search" placeholder="Add habit" aria-label="Add habit" id="habitInput">
+                <button class="btn btn-light" type="submit">Add</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="div-carousel">
+        <div class="swiper swiper-container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="images/main/1.png" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main/2.png" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main/3.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main/4.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main/5.jpg" />
+                </div>
+                <div class="swiper-slide">
+                    <img src="images/main/6.jpg" />
+                </div>
+            </div>
+        </div>
+        <div class="habit-records">
+            <div class="card">
+                <div class="card-body" id="habitRecords">
+                    <h2 style="font-weight: bold; color: #212529;">Habit Tracking Records</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4 p-4">
+                    <h5 class="mb-3">Links</h5>
+                    <a href="index.html" class="d-inline-block mb-2 text-light text-decoration-none">Home</a> <br>
+                    <a href="contact.html" class="d-inline-block mb-2 text-light text-decoration-none">Contact us</a>
+                    <br>
+                    <a href="about.html" class="d-inline-block mb-2 text-light text-decoration-none">About</a>
+                </div>
+                <div class="col-lg-4 p-4">
+                    <h5 class="mb-3">Follow us</h5>
+                    <a href="https://x.com/pingu_priyanshu" class="d-inline-block text-light text-decoration-none mb-2">
+                        <i class="bi bi-twitter-x"></i> Twitter
+                    </a><br>
+                    <a href="https://www.facebook.com/priyanshu.maurya.21"
+                        class="d-inline-block text-light text-decoration-none mb-2">
+                        <i class="bi bi-facebook me-1"></i> Facebook
+                    </a><br>
+                    <a href="https://www.instagram.com/priyanshu_ping/"
+                        class="d-inline-block text-light text-decoration-none">
+                        <i class="bi bi-instagram me-1"></i> Instagram
+                    </a><br>
+                </div>
+                <div class="col-lg-4 p-4">
+                    <h5 class="mb3">More</h5>
+                    <a href="https://github.com/PublicPingu21"
+                        class="d-inline-block text-light text-decoration-none mb-2">
+                        <i class="bi bi-github"></i> Github
+                    </a><br>
+                    <a href="tel: +917002551004" class="d-inline-block mb-2 text-decoration-none text-light">
+                        <i class="bi bi-telephone-fill"></i> +917002551004
+                    </a>
+                    <br>
+                    <a href="mailto:mauryapriyanshu9@gmail.com" class="d-inline-block text-decoration-none text-light">
+                        <i class="bi bi-envelope-fill"></i> mauryapriyanshu9@gmail.com
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark text-white p-3 m-0">
+            Designed and Developed by Priyanshu Maurya
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+        integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+        integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.getElementById('habitForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            var habitInput = document.getElementById('habitInput').value;
+            if (habitInput.trim() !== "") {
+                var habitRecords = document.getElementById('habitRecords');
+
+                var newHabitRecord = document.createElement('div');
+                newHabitRecord.className = 'habit-record';
+
+                var habitTitle = document.createElement('h5');
+                habitTitle.textContent = habitInput;
+
+                var habitDescription = document.createElement('p');
+                habitDescription.textContent = 'New habit added.';
+
+                var deleteBtn = document.createElement('button');
+                deleteBtn.className = 'btn-close delete-btn';
+                deleteBtn.setAttribute('aria-label', 'Close');
+
+                var doneBtn = document.createElement('button');
+                doneBtn.className = 'btn btn-success done-btn';
+                doneBtn.innerHTML = '<i class="bi bi-check-circle"></i>';
+
+                doneBtn.addEventListener('click', function () {
+                    habitTitle.style.textDecoration = 'line-through';
+                    habitDescription.textContent = 'Habit marked as done.';
+                });
+
+                deleteBtn.addEventListener('click', function () {
+                    saveToHistory(habitInput);
+                    habitRecords.removeChild(newHabitRecord);
+                });
+
+                newHabitRecord.appendChild(habitTitle);
+                newHabitRecord.appendChild(habitDescription);
+                newHabitRecord.appendChild(doneBtn);
+                newHabitRecord.appendChild(deleteBtn);
+
+                habitRecords.appendChild(newHabitRecord);
+
+                document.getElementById('habitInput').value = "";
+            }
+        });
+
+        var swiper = new Swiper(".swiper-container", {
+            spaceBetween: 30,
+            effect: "fade",
+            loop: true,
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+        });
+
+        function saveToHistory(habit) {
+            var history = JSON.parse(localStorage.getItem('habitHistory')) || [];
+            history.push(habit);
+            localStorage.setItem('habitHistory', JSON.stringify(history));
+        }
+
+        function viewHistory() {
+            window.location.href = 'history.html';
+        }
+    </script>
+</body>
+
+</html>
