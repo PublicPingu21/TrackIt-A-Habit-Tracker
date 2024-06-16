@@ -30,9 +30,8 @@ Support
 For any questions or issues, please open an issue on GitHub.
 
 License
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License
 
 Acknowledgements
 
-    Special thanks to our team members for their hard work and dedication.
     Inspiration and guidance from the open-source community.
